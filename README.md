@@ -1,3 +1,13 @@
+# ChatWhizzy
+
+## Frontend: React, TypeScript, Material UI
+
+## [Backend: Nest.js, TypeScript, GraphQL](https://github.com/jparkley/nestjs-react-graphql-chatwhizzy-back)
+
+##
+
+##
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
