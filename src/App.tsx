@@ -5,8 +5,9 @@ import {
   createTheme,
 } from "@mui/material";
 import router from "./components/routes/Routes";
-import Auth from "./components/auth/Auth";
 import { RouterProvider } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
+import apolloClient from "./library/apollo-client";
 
 const mainTheme = createTheme({
   palette: {
@@ -16,12 +17,14 @@ const mainTheme = createTheme({
 
 const App = () => {
   return (
-    <ThemeProvider theme={mainTheme}>
-      <CssBaseline />
-      <Container>
-        <RouterProvider router={router}></RouterProvider>
-      </Container>
-    </ThemeProvider>
+    <ApolloProvider client={apolloClient}>
+      <ThemeProvider theme={mainTheme}>
+        <CssBaseline />
+        <Container>
+          <RouterProvider router={router}></RouterProvider>
+        </Container>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 };
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Box, Grid, Link as MUILink } from "@mui/material";
+import { Box, Link as MUILink } from "@mui/material";
 import Auth from "./Auth";
 
 const Signup = () => {

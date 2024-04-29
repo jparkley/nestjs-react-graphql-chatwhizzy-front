@@ -1,4 +1,4 @@
-import { Button, Stack, TextField, useScrollTrigger } from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
 interface AuthPros {

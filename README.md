@@ -2,7 +2,7 @@
 
 ## Frontend: React, TypeScript, Material UI
 
-## [Backend: Nest.js, TypeScript, GraphQL](https://github.com/jparkley/nestjs-react-graphql-chatwhizzy-back)
+## [Backend: Nest.js, TypeScript, GraphQL, Apollo, MongoDB](https://github.com/jparkley/nestjs-react-graphql-chatwhizzy-back)
 
 ##
 
