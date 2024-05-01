@@ -7,7 +7,11 @@ const Login = () => {
   const { login, error } = useLogin();
 
   return (
-    <Auth submitLabel="Login" onSubmit={(request) => login(request)}>
+    <Auth
+      submitLabel="Login"
+      onSubmit={(request) => login(request)}
+      error={error ? "Login Failed: Your user ID or password is incorrect" : ""}
+    >
       <Box
         sx={{
           display: "flex",

@@ -6,7 +6,7 @@ const useLogin = () => {
 
   const login = async (request: { email: string; password: string }) => {
     const response = await fetch(
-      `${process.env.REACT_APP_GRAPHQL_URL}auth/login`,
+      `${process.env.REACT_APP_API_URL}/auth/login`,
       {
         method: "POST",
         headers: {

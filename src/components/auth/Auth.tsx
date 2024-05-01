@@ -5,9 +5,10 @@ interface AuthProps {
   submitLabel: string;
   onSubmit: (credentials: { email: string; password: string }) => Promise<void>;
   children: React.ReactNode;
+  error?: string;
 }
 
-const Auth = ({ submitLabel, onSubmit, children }: AuthProps) => {
+const Auth = ({ submitLabel, onSubmit, children, error }: AuthProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,6 +30,8 @@ const Auth = ({ submitLabel, onSubmit, children }: AuthProps) => {
         label="Email"
         variant="outlined"
         value={email}
+        error={!!error}
+        helperText={error}
         onChange={(e) => setEmail(e.target.value)}
       />
       <TextField
@@ -36,6 +39,8 @@ const Auth = ({ submitLabel, onSubmit, children }: AuthProps) => {
         label="Password"
         variant="outlined"
         value={password}
+        error={!!error}
+        helperText={error}
         onChange={(e) => setPassword(e.target.value)}
       />
       <Button variant="contained" onClick={() => onSubmit({ email, password })}>
