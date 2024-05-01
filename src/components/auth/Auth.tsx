@@ -1,13 +1,13 @@
 import { Button, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
-interface AuthPros {
+interface AuthProps {
   submitLabel: string;
   onSubmit: (credentials: { email: string; password: string }) => Promise<void>;
   children: React.ReactNode;
 }
 
-const Auth = ({ submitLabel, onSubmit, children }: AuthPros) => {
+const Auth = ({ submitLabel, onSubmit, children }: AuthProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

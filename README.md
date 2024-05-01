@@ -1,8 +1,8 @@
 # ChatWhizzy
 
-## Frontend: React, TypeScript, Material UI
+## Frontend: React, TypeScript, GraphQL, Apollo, Material UI
 
-## [Backend: Nest.js, TypeScript, GraphQL, Apollo, MongoDB](https://github.com/jparkley/nestjs-react-graphql-chatwhizzy-back)
+## [Backend: Nest.js, TypeScript, GraphQL, Apollo, Passport, JWT, MongoDB](https://github.com/jparkley/nestjs-react-graphql-chatwhizzy-back)
 
 ##
 
