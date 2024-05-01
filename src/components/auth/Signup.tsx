@@ -2,21 +2,29 @@ import { Link } from "react-router-dom";
 import { Box, Link as MUILink } from "@mui/material";
 import Auth from "./Auth";
 import useCreateUser from "../../library/hooks/usecreateUser";
+import { useState } from "react";
 
 const Signup = () => {
   const [createUser] = useCreateUser();
+  const [error, setError] = useState("");
   return (
     <Auth
       submitLabel="Sign Up"
+      error={error}
       onSubmit={async ({ email, password }) => {
-        await createUser({
-          variables: {
-            createUserInput: {
-              email,
-              password,
+        try {
+          await createUser({
+            variables: {
+              createUserInput: {
+                email,
+                password,
+              },
             },
-          },
-        });
+          });
+          setError("");
+        } catch (error: any) {
+          error && setError(error.message);
+        }
       }}
     >
       <Box
