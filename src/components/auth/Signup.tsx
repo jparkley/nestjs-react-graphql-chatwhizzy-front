@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, Link as MUILink } from "@mui/material";
 import Auth from "./Auth";
-import useCreateUser from "../../library/hooks/usecreateUser";
-import { useState } from "react";
-import { handleGraphQLErrors } from "../../library/utils/graphql-errors";
+import useCreateUser from "@/library/hooks/useCreateUser";
+import { handleGraphQLErrors } from "@/library/utils/graphql-errors";
 
 const Signup = () => {
   const [createUser] = useCreateUser();
