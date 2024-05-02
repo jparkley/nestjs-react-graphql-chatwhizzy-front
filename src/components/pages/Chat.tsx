@@ -2,7 +2,7 @@ const Chat = () => {
   return (
     <>
       <div>
-        <h2>Home, Hello!</h2>
+        <h2>Chatting window</h2>
       </div>
     </>
   );

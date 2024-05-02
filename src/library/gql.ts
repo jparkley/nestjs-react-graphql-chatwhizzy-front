@@ -16,4 +16,13 @@ const CREATE_USER = gql`
   }
 `;
 
-export { CREATE_USER };
+const GET_CURRENT_USER = gql`
+  query GetCurrentUser {
+    currentUser {
+      _id
+      email
+    }
+  }
+`;
+
+export { CREATE_USER, GET_CURRENT_USER };
