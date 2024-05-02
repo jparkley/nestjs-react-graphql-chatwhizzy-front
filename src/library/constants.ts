@@ -1,3 +1,2 @@
-const publicRoutes = ["/", "/login", "/signup"];
-
-export { publicRoutes };
+export const ERROR_UNAUTHENTICATED = "UNAUTHENTICATED";
+export const publicRoutes = ["/", "/login", "/signup"];
