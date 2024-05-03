@@ -1,5 +1,7 @@
 import { Button, Stack, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
+import { useNavigate } from "react-router-dom";
 
 interface AuthProps {
   submitLabel: string;
@@ -18,6 +20,15 @@ const Auth = ({
 }: AuthProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { data } = useGetCurrentUser();
+  const navigate = useNavigate();
+
+  // Redirect users when they're logged in
+  useEffect(() => {
+    if (data) {
+      navigate("/chat");
+    }
+  }, [data, navigate]);
 
   return (
     <Stack

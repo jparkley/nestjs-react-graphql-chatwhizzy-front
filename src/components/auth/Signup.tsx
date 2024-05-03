@@ -4,10 +4,13 @@ import { Box, Link as MUILink } from "@mui/material";
 import Auth from "./Auth";
 import useCreateUser from "../../library/hooks/useCreateUser";
 import { handleGraphQLErrors } from "../../library/utils/graphql-errors";
+import useLogin from "../../library/hooks/useLogin";
 
 const Signup = () => {
   const [createUser, { loading }] = useCreateUser();
   const [error, setError] = useState("");
+  const { login } = useLogin();
+
   return (
     <Auth
       submitLabel="Sign Up"
@@ -23,6 +26,7 @@ const Signup = () => {
               },
             },
           });
+          await login({ email, password });
           setError("");
         } catch (error: any) {
           error && setError(handleGraphQLErrors(error));
