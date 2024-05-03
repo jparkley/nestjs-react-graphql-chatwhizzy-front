@@ -6,12 +6,13 @@ import useCreateUser from "../../library/hooks/useCreateUser";
 import { handleGraphQLErrors } from "../../library/utils/graphql-errors";
 
 const Signup = () => {
-  const [createUser] = useCreateUser();
+  const [createUser, { loading }] = useCreateUser();
   const [error, setError] = useState("");
   return (
     <Auth
       submitLabel="Sign Up"
       error={error}
+      loading={loading}
       onSubmit={async ({ email, password }) => {
         try {
           await createUser({
