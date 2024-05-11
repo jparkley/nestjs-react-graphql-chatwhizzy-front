@@ -1,26 +1,18 @@
-import {
-  Container,
-  CssBaseline,
-  ThemeProvider,
-  createTheme,
-} from "@mui/material";
-import router from "./components/routes/Routes";
+import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import { RouterProvider } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import apolloClient from "./library/apollo-client";
+import router from "./components/routes/Routes";
 import RouteGuard from "./components/auth/RouteGuard";
-
-const mainTheme = createTheme({
-  palette: {
-    mode: "light",
-  },
-});
+import Header from "./components/common/Header";
+import mainTheme from "./theme";
 
 const App = () => {
   return (
     <ApolloProvider client={apolloClient}>
       <ThemeProvider theme={mainTheme}>
         <CssBaseline />
+        <Header />
         <Container>
           <RouteGuard>
             <RouterProvider router={router}></RouterProvider>
