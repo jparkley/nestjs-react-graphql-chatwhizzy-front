@@ -5,6 +5,7 @@ import NavMenu from "./NavMenu";
 import NavUserMenu from "./NavUserMenu";
 import { loggedInVar } from "../../library/apollo-var";
 import { useReactiveVar } from "@apollo/client";
+import { navPagesForNonUsers, navPagesForUsers } from "../../library/constants";
 
 const Header = () => {
   const loggedIn = useReactiveVar(loggedInVar);
@@ -13,7 +14,7 @@ const Header = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <NavMenu pages={["Chat", "TopWhizz"]} />
+          <NavMenu pages={loggedIn ? navPagesForUsers : navPagesForNonUsers} />
           {loggedIn && <NavUserMenu />}
         </Toolbar>
       </Container>

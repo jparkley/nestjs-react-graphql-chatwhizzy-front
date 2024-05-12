@@ -8,9 +8,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import router from "../routes/Routes";
+import { NavPage } from "../../library/interfaces";
 
 interface NavMenuProps {
-  pages: string[];
+  pages: NavPage[];
 }
 
 const NavMenu = ({ pages }: NavMenuProps) => {
@@ -46,6 +47,8 @@ const NavMenu = ({ pages }: NavMenuProps) => {
       >
         ChatWhizzy
       </Typography>
+
+      {/* mobile or smaller screen menu */}
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
         <IconButton
           size="large"
@@ -76,9 +79,15 @@ const NavMenu = ({ pages }: NavMenuProps) => {
           }}
         >
           {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
+            <MenuItem
+              key={page.name}
+              onClick={() => {
+                router.navigate(page.path);
+                handleCloseNavMenu();
+              }}
+            >
               <Typography textAlign="center" textTransform="none">
-                {page}
+                {page.name}
               </Typography>
             </MenuItem>
           ))}
@@ -106,13 +115,16 @@ const NavMenu = ({ pages }: NavMenuProps) => {
       <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
         {pages.map((page) => (
           <Button
-            key={page}
-            onClick={handleCloseNavMenu}
+            key={page.name}
+            onClick={() => {
+              router.navigate(page.path);
+              handleCloseNavMenu();
+            }}
             size="medium"
             style={{ textTransform: "none" }}
             sx={{ my: 2, color: "white", display: "block" }}
           >
-            {page}
+            {page.name}
           </Button>
         ))}
       </Box>
