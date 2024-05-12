@@ -8,8 +8,8 @@ export const navPagesForUsers: NavPage[] = [
     path: "/chat",
   },
   {
-    name: "TopWhizz",
-    path: "/topwhizz",
+    name: "Shop",
+    path: "/shop",
   },
 ];
 
