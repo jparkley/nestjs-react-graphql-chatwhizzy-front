@@ -1,14 +1,13 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { ERROR_UNAUTHENTICATED, publicRoutes } from "./constants";
+import redirectToLogin from "./utils/redirectToLogin";
 
 const redirectLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
     if (graphQLErrors[0].extensions.code === ERROR_UNAUTHENTICATED) {
       if (!publicRoutes.includes(window.location.pathname)) {
-        // router.navigate("/login");
-        window.location.replace("/login");
-        apolloClient.resetStore();
+        redirectToLogin();
       }
     }
   }

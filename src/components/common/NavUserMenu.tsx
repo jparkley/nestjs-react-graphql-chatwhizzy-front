@@ -7,9 +7,12 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { userMenu } from "../../library/constants";
+import useLogout from "../../library/hooks/useLogout";
+import redirectToLogin from "../../library/utils/redirectToLogin";
 
 const NavUserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const { logout } = useLogout();
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -42,11 +45,16 @@ const NavUserMenu = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {userMenu.map((menuItem) => (
-          <MenuItem key={menuItem} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{menuItem}</Typography>
-          </MenuItem>
-        ))}
+        <MenuItem
+          key="logout"
+          onClick={() => {
+            logout();
+            redirectToLogin();
+            handleCloseUserMenu();
+          }}
+        >
+          <Typography textAlign="center">Logout</Typography>
+        </MenuItem>
       </Menu>
     </Box>
   );
