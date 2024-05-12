@@ -12,6 +12,7 @@ import router from "../routes/Routes";
 interface NavMenuProps {
   pages: string[];
 }
+
 const NavMenu = ({ pages }: NavMenuProps) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
