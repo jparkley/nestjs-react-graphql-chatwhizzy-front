@@ -1,8 +1,18 @@
+import { useEffect } from "react";
 import { publicRoutes } from "../../library/constants";
 import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
+import { loggedInVar } from "../../library/apollo-var";
 
 const RouteGuard = ({ children }: { children: JSX.Element }) => {
   const { data: user } = useGetCurrentUser();
+
+  useEffect(() => {
+    // when a user logs in successfully, set loggedInVar true
+    if (user) {
+      loggedInVar(true);
+      // loggedInVar: ƒ (newValue) {
+    }
+  }, [user]);
 
   return (
     <>
