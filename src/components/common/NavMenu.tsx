@@ -32,7 +32,6 @@ const NavMenu = ({ pages }: NavMenuProps) => {
         variant="h6"
         noWrap
         component="a"
-        href="/"
         onClick={() => router.navigate("/")}
         sx={{
           mr: 4,
