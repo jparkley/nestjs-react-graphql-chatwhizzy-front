@@ -6,7 +6,10 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 
-const ChatListItem = () => {
+interface ChatListItemProps {
+  chatName?: string | null;
+}
+const ChatListItem = ({ chatName }: ChatListItemProps) => {
   return (
     <>
       <ListItem alignItems="flex-start">
@@ -14,7 +17,7 @@ const ChatListItem = () => {
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
         <ListItemText
-          primary="Brunch this weekend?"
+          primary={chatName || ""}
           secondary={
             <React.Fragment>
               <Typography
@@ -23,7 +26,7 @@ const ChatListItem = () => {
                 variant="body2"
                 color="text.primary"
               >
-                Ali Connors
+                Another Chat room
               </Typography>
               {" — I'll be in your neighborhood doing errands this…"}
             </React.Fragment>

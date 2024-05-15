@@ -26,4 +26,12 @@ const CreateChatDocument = graphql(`
   }
 `);
 
+const GetChats = graphql(`
+  query GetChats {
+    chats {
+      ...ChatFragment
+    }
+  }
+`);
+
 export { CreateUserDocument, GetCurrentUserDocument, CreateChatDocument };

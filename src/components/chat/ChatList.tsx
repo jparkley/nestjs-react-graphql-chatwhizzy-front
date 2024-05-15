@@ -4,9 +4,11 @@ import Stack from "@mui/material/Stack";
 import ChatListItem from "./ChatListItem";
 import ChatListHeader from "./ChatListHeader";
 import ChatModal from "./ChatModal";
+import useGetChats from "../../library/hooks/useGetChats";
 
 const ChatList = () => {
   const [showModal, setShowModal] = useState(false);
+  const { data } = useGetChats();
   return (
     <>
       <ChatModal open={showModal} handleClose={() => setShowModal(false)} />
@@ -21,17 +23,9 @@ const ChatList = () => {
             overflow: "auto",
           }}
         >
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
-          <ChatListItem />
+          {data?.chats?.map((chat) => (
+            <ChatListItem chatName={chat.chatName} />
+          ))}
           <ChatListItem />
           <ChatListItem />
         </List>
