@@ -23,13 +23,21 @@ interface ChatModalProps {
   handleClose: () => void;
 }
 const ChatModal = ({ open, handleClose }: ChatModalProps) => {
-  const [isPrivate, setIsPrivate] = useState(true);
-  const [chatName, setChatName] = useState<string | undefined>("");
+  const [isPrivate, setIsPrivate] = useState(false);
+  const [chatName, setChatName] = useState("");
+  const [error, setError] = useState("");
   const [createChat] = useCreateChat();
+
+  const resetOnClose = () => {
+    setIsPrivate(false);
+    setChatName("");
+    setError("");
+    handleClose();
+  };
 
   return (
     <>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={resetOnClose}>
         <Box
           sx={{
             position: "absolute" as "absolute",
@@ -53,7 +61,7 @@ const ChatModal = ({ open, handleClose }: ChatModalProps) => {
                 label="Private"
                 control={
                   <Switch
-                    defaultChecked
+                    defaultChecked={isPrivate}
                     value={isPrivate}
                     onChange={(e) => setIsPrivate(e?.target.checked)}
                   />
@@ -76,22 +84,29 @@ const ChatModal = ({ open, handleClose }: ChatModalProps) => {
             ) : (
               <TextField
                 label="Chat Room Name"
+                error={!!error}
+                helperText={error}
                 onChange={(e) => setChatName(e.target.value)}
               />
             )}
             <Button
               variant="outlined"
               sx={{ mt: 2 }}
-              onClick={() =>
-                createChat({
+              onClick={async () => {
+                if (!chatName.length) {
+                  setError("Chat Room Name is required");
+                  return;
+                }
+                await createChat({
                   variables: {
                     createChatInput: {
                       isPrivate,
                       chatName: chatName || undefined,
                     },
                   },
-                })
-              }
+                });
+                resetOnClose();
+              }}
             >
               Save
             </Button>
