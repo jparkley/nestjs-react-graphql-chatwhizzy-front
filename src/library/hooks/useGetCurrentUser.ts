@@ -1,8 +1,7 @@
 import { useQuery } from "@apollo/client";
-import { GET_CURRENT_USER } from "../gql";
-import { User } from "../models/User";
+import { GetCurrentUserDocument } from "../gql.documents";
 
 const useGetCurrentUser = () => {
-  return useQuery<{ currentUser: User }>(GET_CURRENT_USER);
+  return useQuery(GetCurrentUserDocument);
 };
 export default useGetCurrentUser;

@@ -1,9 +1,8 @@
 import { useMutation } from "@apollo/client";
-import { CREATE_USER, CreateUserInput } from "../gql";
-import { User } from "../models/User";
+import { CreateUserDocument } from "../gql.documents";
 
 const useCreateUser = () => {
-  return useMutation<User, CreateUserInput>(CREATE_USER);
+  return useMutation(CreateUserDocument);
 };
 
 export default useCreateUser;
