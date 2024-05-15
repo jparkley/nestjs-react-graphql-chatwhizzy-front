@@ -23,6 +23,9 @@ interface ChatModalProps {
 }
 const ChatModal = ({ open, handleClose }: ChatModalProps) => {
   const [isPrivate, setIsPrivate] = useState(true);
+  const [chatName, setChatName] = useState("");
+  console.log("🚀 ~ ChatModal ~ chatName:", chatName);
+
   return (
     <>
       <Modal open={open} onClose={handleClose}>
@@ -70,7 +73,10 @@ const ChatModal = ({ open, handleClose }: ChatModalProps) => {
                 </IconButton>
               </Paper>
             ) : (
-              <TextField label="Chat Room Name" />
+              <TextField
+                label="Chat Room Name"
+                onChange={(e) => setChatName(e.target.value)}
+              />
             )}
             <Button variant="outlined" sx={{ mt: 2 }}>
               Save

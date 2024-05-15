@@ -18,4 +18,16 @@ const GetCurrentUserDocument = graphql(`
   }
 `);
 
-export { CreateUserDocument, GetCurrentUserDocument };
+const CreateChatDocument = graphql(`
+  mutation CreateChat($createChatInput: CreateChatInput!) {
+    createChat(createChatInput: $createChatInput) {
+      _id
+      creatorId
+      isPrivate
+      memberIds
+      chatName
+    }
+  }
+`);
+
+export { CreateUserDocument, GetCurrentUserDocument, CreateChatDocument };
