@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { CreateUserDocument } from "../gql.documents";
+import { CreateUserDocument } from "../graphql/gql.documents";
 
 const useCreateUser = () => {
   return useMutation(CreateUserDocument);

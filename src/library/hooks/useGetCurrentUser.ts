@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GetCurrentUserDocument } from "../gql.documents";
+import { GetCurrentUserDocument } from "../graphql/gql.documents";
 
 const useGetCurrentUser = () => {
   return useQuery(GetCurrentUserDocument);

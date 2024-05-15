@@ -1,4 +1,4 @@
-import { graphql } from "../gql/gql";
+import { graphql } from "../../gql/gql";
 
 const CreateUserDocument = graphql(`
   mutation CreateUser($createUserInput: CreateUserInput!) {
@@ -21,11 +21,7 @@ const GetCurrentUserDocument = graphql(`
 const CreateChatDocument = graphql(`
   mutation CreateChat($createChatInput: CreateChatInput!) {
     createChat(createChatInput: $createChatInput) {
-      _id
-      creatorId
-      isPrivate
-      memberIds
-      chatName
+      ...ChatFragment
     }
   }
 `);
