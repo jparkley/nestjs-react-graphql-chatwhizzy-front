@@ -16,6 +16,7 @@ import {
   outlinedInputClasses,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
+import useCreateChat from "../../library/hooks/useCreateChat";
 
 interface ChatModalProps {
   open: boolean;
@@ -23,8 +24,8 @@ interface ChatModalProps {
 }
 const ChatModal = ({ open, handleClose }: ChatModalProps) => {
   const [isPrivate, setIsPrivate] = useState(true);
-  const [chatName, setChatName] = useState("");
-  console.log("🚀 ~ ChatModal ~ chatName:", chatName);
+  const [chatName, setChatName] = useState<string | undefined>("");
+  const [createChat] = useCreateChat();
 
   return (
     <>
@@ -78,7 +79,20 @@ const ChatModal = ({ open, handleClose }: ChatModalProps) => {
                 onChange={(e) => setChatName(e.target.value)}
               />
             )}
-            <Button variant="outlined" sx={{ mt: 2 }}>
+            <Button
+              variant="outlined"
+              sx={{ mt: 2 }}
+              onClick={() =>
+                createChat({
+                  variables: {
+                    createChatInput: {
+                      isPrivate,
+                      chatName: chatName || undefined,
+                    },
+                  },
+                })
+              }
+            >
               Save
             </Button>
           </Stack>
