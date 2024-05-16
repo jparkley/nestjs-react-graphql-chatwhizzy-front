@@ -4,6 +4,7 @@ import Chat from "../pages/Chat";
 import Login from "../auth/Login";
 import Signup from "../auth/Signup";
 import Shop from "../pages/Shop";
+import ChatMain from "../chat/ChatContent";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/chat",
+    element: <Chat />,
+  },
+  {
+    path: "/chat/:_id",
+    // element: <ChatMain />,
     element: <Chat />,
   },
   {

@@ -24,7 +24,7 @@ const ChatList = () => {
           }}
         >
           {data?.chats?.map((chat) => (
-            <ChatListItem chatName={chat.chatName} />
+            <ChatListItem chat={chat} />
           ))}
         </List>
       </Stack>

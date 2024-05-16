@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import ChatList from "../chat/ChatList";
+import ChatContent from "../chat/ChatContent";
 
 const Chat = () => {
   return (
@@ -9,7 +10,7 @@ const Chat = () => {
           <ChatList />
         </Grid>
         <Grid item xs={6} md={8}>
-          Chat Main Window
+          <ChatContent />
         </Grid>
       </Grid>
     </>
