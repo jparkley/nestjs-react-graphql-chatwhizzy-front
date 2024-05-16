@@ -5,7 +5,7 @@ const mainTheme = createTheme({
     mode: "light",
   },
   typography: {
-    fontFamily: "cursive",
+    fontFamily: "Noto Sans",
     button: {
       fontSize: 16,
       letterSpacing: ".1rem",

@@ -5,6 +5,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Box from "@mui/material/Box";
 
 interface ChatListItemProps {
   chatName?: string | null;
@@ -17,7 +18,8 @@ const ChatListItem = ({ chatName }: ChatListItemProps) => {
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
         <ListItemText
-          primary={chatName || ""}
+          primary={<Box fontWeight="fontWeightBold">{chatName || ""}</Box>}
+          style={{ color: "#2C4E80" }}
           secondary={
             <React.Fragment>
               <Typography

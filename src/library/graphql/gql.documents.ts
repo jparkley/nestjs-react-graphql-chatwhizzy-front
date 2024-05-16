@@ -26,7 +26,7 @@ const CreateChatDocument = graphql(`
   }
 `);
 
-const GetChats = graphql(`
+const GetChatsDocument = graphql(`
   query GetChats {
     chats {
       ...ChatFragment
@@ -34,4 +34,18 @@ const GetChats = graphql(`
   }
 `);
 
-export { CreateUserDocument, GetCurrentUserDocument, CreateChatDocument };
+const GetChatDocument = graphql(`
+  query GetChat($_id: String!) {
+    chat(_id: $_id) {
+      ...ChatFragment
+    }
+  }
+`);
+
+export {
+  CreateUserDocument,
+  GetCurrentUserDocument,
+  CreateChatDocument,
+  GetChatsDocument,
+  GetChatDocument,
+};

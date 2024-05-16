@@ -19,7 +19,7 @@ export type Scalars = {
 export type Chat = {
   __typename?: 'Chat';
   _id: Scalars['ID']['output'];
-  chatName: Scalars['String']['output'];
+  chatName?: Maybe<Scalars['String']['output']>;
   creatorId: Scalars['String']['output'];
   isPrivate: Scalars['Boolean']['output'];
   memberIds: Array<Scalars['String']['output']>;
@@ -82,7 +82,7 @@ export type Query = {
 
 
 export type QueryChatArgs = {
-  id: Scalars['Int']['input'];
+  _id: Scalars['String']['input'];
 };
 
 
@@ -108,7 +108,7 @@ export type User = {
   email: Scalars['String']['output'];
 };
 
-export type ChatFragmentFragment = { __typename?: 'Chat', _id: string, creatorId: string, isPrivate: boolean, memberIds: Array<string>, chatName: string };
+export type ChatFragmentFragment = { __typename?: 'Chat', _id: string, creatorId: string, isPrivate: boolean, memberIds: Array<string>, chatName?: string | null };
 
 export type CreateUserMutationVariables = Exact<{
   createUserInput: CreateUserInput;
@@ -127,12 +127,12 @@ export type CreateChatMutationVariables = Exact<{
 }>;
 
 
-export type CreateChatMutation = { __typename?: 'Mutation', createChat: { __typename?: 'Chat', _id: string, creatorId: string, isPrivate: boolean, memberIds: Array<string>, chatName: string } };
+export type CreateChatMutation = { __typename?: 'Mutation', createChat: { __typename?: 'Chat', _id: string, creatorId: string, isPrivate: boolean, memberIds: Array<string>, chatName?: string | null } };
 
 export type GetChatsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetChatsQuery = { __typename?: 'Query', chats: Array<{ __typename?: 'Chat', _id: string, creatorId: string, isPrivate: boolean, memberIds: Array<string>, chatName: string }> };
+export type GetChatsQuery = { __typename?: 'Query', chats: Array<{ __typename?: 'Chat', _id: string, creatorId: string, isPrivate: boolean, memberIds: Array<string>, chatName?: string | null }> };
 
 export const ChatFragmentFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ChatFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Chat"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"creatorId"}},{"kind":"Field","name":{"kind":"Name","value":"isPrivate"}},{"kind":"Field","name":{"kind":"Name","value":"memberIds"}},{"kind":"Field","name":{"kind":"Name","value":"chatName"}}]}}]} as unknown as DocumentNode<ChatFragmentFragment, unknown>;
 export const CreateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"createUserInput"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateUserInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createUserInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"createUserInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<CreateUserMutation, CreateUserMutationVariables>;

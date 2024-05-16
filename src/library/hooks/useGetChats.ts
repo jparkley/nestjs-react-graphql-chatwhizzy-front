@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GetChatsDocument } from "../../gql/graphql";
+import { GetChatsDocument } from "../graphql/gql.documents";
 
 const useGetChats = () => {
   return useQuery(GetChatsDocument);
