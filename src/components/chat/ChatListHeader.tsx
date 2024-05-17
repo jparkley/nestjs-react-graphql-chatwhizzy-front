@@ -11,10 +11,13 @@ const ChatListHeader = ({ addChatModal }: ChatListHeaderProps) => {
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar variant="regular">
           <IconButton size="large">
-            <AddComment color="primary" onClick={() => addChatModal()} />
+            <AddComment
+              sx={{ color: "#57A6A1" }}
+              onClick={() => addChatModal()}
+            />
           </IconButton>
           <IconButton size="large">
-            <Favorite color="primary" />
+            <Favorite sx={{ color: "#57A6A1" }} />
           </IconButton>
         </Toolbar>
       </AppBar>

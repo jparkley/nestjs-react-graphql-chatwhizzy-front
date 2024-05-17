@@ -19,7 +19,7 @@ const ChatListItem = ({ chat }: ChatListItemProps) => {
     <>
       <ListItem alignItems="flex-start" disablePadding>
         <ListItemButton onClick={() => router.navigate(`/chat/${chat._id}`)}>
-          <ListItemAvatar>
+          <ListItemAvatar sx={{ color: "#57A6A1" }}>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText

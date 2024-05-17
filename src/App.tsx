@@ -13,7 +13,7 @@ const App = () => {
       <ThemeProvider theme={mainTheme}>
         <CssBaseline />
         <Header />
-        <Container>
+        <Container sx={{ height: "100%" }}>
           <RouteGuard>
             <RouterProvider router={router}></RouterProvider>
           </RouteGuard>
