@@ -9,3 +9,11 @@ export const ChatFragment = graphql(`
     chatName
   }
 `);
+
+export const ThreadFragment = graphql(`
+  fragment ThreadFragment on Thread {
+    _id
+    content
+    createdAt
+  }
+`);

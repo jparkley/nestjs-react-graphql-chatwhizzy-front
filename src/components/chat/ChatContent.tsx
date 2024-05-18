@@ -1,11 +1,19 @@
 import { useParams } from "react-router-dom";
 import useGetChat from "../../library/hooks/useGetChat";
 import ChatDefaultImage from "./ChatDefaultImage";
-import { IconButton, InputBase, Paper, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  InputBase,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import AttractionsIcon from "@mui/icons-material/Attractions";
 import SendRounded from "@mui/icons-material/SendRounded";
 import useCreateThread from "../../library/hooks/useCreateThread";
 import { useState } from "react";
+import useGetThreads from "../../library/hooks/useGetThreads";
 
 const ChatContent = () => {
   const params = useParams();
@@ -13,6 +21,7 @@ const ChatContent = () => {
   const [thread, setThread] = useState("");
   const { data } = useGetChat({ _id: chatId });
   const [createThread] = useCreateThread();
+  const { data: threads } = useGetThreads({ chatId });
 
   return (
     <Stack
@@ -26,6 +35,12 @@ const ChatContent = () => {
       {params._id ? (
         <>
           <Typography variant="h4">{data?.chat.chatName}</Typography>
+          <Box>
+            {threads?.threads.map((thread) => (
+              <p>{thread.content}</p>
+            ))}
+          </Box>
+
           <Paper>
             <InputBase
               sx={{

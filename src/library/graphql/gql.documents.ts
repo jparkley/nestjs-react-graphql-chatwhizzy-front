@@ -45,9 +45,15 @@ const GetChatDocument = graphql(`
 const CreateThreadDocument = graphql(`
   mutation CreateThread($createThreadInput: CreateThreadInput!) {
     createThread(createThreadInput: $createThreadInput) {
-      _id
-      content
-      createdAt
+      ...ThreadFragment
+    }
+  }
+`);
+
+const GetThreadsDocument = graphql(`
+  query GetThreads($chatId: String!) {
+    threads(chatId: $chatId) {
+      ...ThreadFragment
     }
   }
 `);
@@ -59,4 +65,5 @@ export {
   GetChatsDocument,
   GetChatDocument,
   CreateThreadDocument,
+  GetThreadsDocument,
 };
