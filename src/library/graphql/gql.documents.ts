@@ -42,10 +42,21 @@ const GetChatDocument = graphql(`
   }
 `);
 
+const CreateThreadDocument = graphql(`
+  mutation CreateThread($createThreadInput: CreateThreadInput!) {
+    createThread(createThreadInput: $createThreadInput) {
+      _id
+      content
+      createdAt
+    }
+  }
+`);
+
 export {
   CreateUserDocument,
   GetCurrentUserDocument,
   CreateChatDocument,
   GetChatsDocument,
   GetChatDocument,
+  CreateThreadDocument,
 };

@@ -19,6 +19,7 @@ const documents = {
     "\n  mutation CreateChat($createChatInput: CreateChatInput!) {\n    createChat(createChatInput: $createChatInput) {\n      ...ChatFragment\n    }\n  }\n": types.CreateChatDocument,
     "\n  query GetChats {\n    chats {\n      ...ChatFragment\n    }\n  }\n": types.GetChatsDocument,
     "\n  query GetChat($_id: String!) {\n    chat(_id: $_id) {\n      ...ChatFragment\n    }\n  }\n": types.GetChatDocument,
+    "\n  mutation CreateThread($createThreadInput: CreateThreadInput!) {\n    createThread(createThreadInput: $createThreadInput) {\n      _id\n      content\n      createdAt\n    }\n  }\n": types.CreateThreadDocument,
 };
 
 /**
@@ -59,6 +60,10 @@ export function graphql(source: "\n  query GetChats {\n    chats {\n      ...Cha
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query GetChat($_id: String!) {\n    chat(_id: $_id) {\n      ...ChatFragment\n    }\n  }\n"): (typeof documents)["\n  query GetChat($_id: String!) {\n    chat(_id: $_id) {\n      ...ChatFragment\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation CreateThread($createThreadInput: CreateThreadInput!) {\n    createThread(createThreadInput: $createThreadInput) {\n      _id\n      content\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  mutation CreateThread($createThreadInput: CreateThreadInput!) {\n    createThread(createThreadInput: $createThreadInput) {\n      _id\n      content\n      createdAt\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
