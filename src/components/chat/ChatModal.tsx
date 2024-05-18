@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import useCreateChat from "../../library/hooks/useCreateChat";
+import router from "../routes/Routes";
 
 interface ChatModalProps {
   open: boolean;
@@ -97,7 +98,7 @@ const ChatModal = ({ open, handleClose }: ChatModalProps) => {
                   setError("Chat Room Name is required");
                   return;
                 }
-                await createChat({
+                const newChat = await createChat({
                   variables: {
                     createChatInput: {
                       isPrivate,
@@ -106,6 +107,7 @@ const ChatModal = ({ open, handleClose }: ChatModalProps) => {
                   },
                 });
                 resetOnClose();
+                router.navigate(`/chat/${newChat.data?.createChat._id}`);
               }}
             >
               Save
