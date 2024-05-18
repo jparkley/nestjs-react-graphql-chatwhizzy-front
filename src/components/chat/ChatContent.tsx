@@ -14,7 +14,7 @@ import {
 import AttractionsIcon from "@mui/icons-material/Attractions";
 import SendRounded from "@mui/icons-material/SendRounded";
 import useCreateThread from "../../library/hooks/useCreateThread";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useGetThreads from "../../library/hooks/useGetThreads";
 
 const ChatContent = () => {
