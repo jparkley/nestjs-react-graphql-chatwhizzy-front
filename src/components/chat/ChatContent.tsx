@@ -21,16 +21,28 @@ const ChatContent = () => {
   const params = useParams();
   const chatId = params._id!;
   const [thread, setThread] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { data } = useGetChat({ _id: chatId });
   const [createThread] = useCreateThread(chatId);
   const { data: threads } = useGetThreads({ chatId });
 
   const handleCreateThread = async () => {
-    await createThread({
-      variables: { createThreadInput: { content: thread, chatId } },
-    });
-    setThread("");
+    if (isSubmitting) return; // prevent multiple submission
+
+    setIsSubmitting(true);
+
+    try {
+      await createThread({
+        variables: { createThreadInput: { content: thread, chatId } },
+      });
+      setThread("");
+    } catch {
+      console.error("Error while writing a new thread");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
   return (
     <Stack
       sx={{
@@ -77,7 +89,10 @@ const ChatContent = () => {
               value={thread}
               onChange={(e) => setThread(e.target.value)}
               onKeyDown={async (e) => {
-                if (e.key == "Enter") await handleCreateThread();
+                if (e.key == "Enter") {
+                  e.preventDefault();
+                  await handleCreateThread();
+                }
               }}
             />
             <IconButton onClick={handleCreateThread}>
