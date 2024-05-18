@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import useGetChat from "../../library/hooks/useGetChat";
 import ChatDefaultImage from "./ChatDefaultImage";
 import {
@@ -14,7 +14,7 @@ import {
 import AttractionsIcon from "@mui/icons-material/Attractions";
 import SendRounded from "@mui/icons-material/SendRounded";
 import useCreateThread from "../../library/hooks/useCreateThread";
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import useGetThreads from "../../library/hooks/useGetThreads";
 
 const ChatContent = () => {
@@ -25,6 +25,15 @@ const ChatContent = () => {
   const { data } = useGetChat({ _id: chatId });
   const [createThread] = useCreateThread(chatId);
   const { data: threads } = useGetThreads({ chatId });
+  const divRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
+
+  const scrollToBottom = () => divRef.current?.scrollIntoView();
+
+  useEffect(() => {
+    setThread("");
+    scrollToBottom();
+  }, [location, threads]);
 
   const handleCreateThread = async () => {
     if (isSubmitting) return; // prevent multiple submission
@@ -36,6 +45,7 @@ const ChatContent = () => {
         variables: { createThreadInput: { content: thread, chatId } },
       });
       setThread("");
+      scrollToBottom();
     } catch {
       console.error("Error while writing a new thread");
     } finally {
@@ -55,7 +65,7 @@ const ChatContent = () => {
       {params._id ? (
         <>
           <Typography variant="h4">{data?.chat.chatName}</Typography>
-          <Box>
+          <Box sx={{ maxHeight: "70vh", overflow: "auto" }}>
             {threads?.threads.map((thread) => (
               <Grid container alignItems="center" sx={{ marginBottom: 1 }}>
                 <Grid item xs={3} md={1}>
@@ -73,6 +83,7 @@ const ChatContent = () => {
                 </Grid>
               </Grid>
             ))}
+            <div ref={divRef}></div>
           </Box>
 
           <Paper>
