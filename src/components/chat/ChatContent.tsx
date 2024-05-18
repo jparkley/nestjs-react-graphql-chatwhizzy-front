@@ -20,7 +20,7 @@ const ChatContent = () => {
   const chatId = params._id!;
   const [thread, setThread] = useState("");
   const { data } = useGetChat({ _id: chatId });
-  const [createThread] = useCreateThread();
+  const [createThread] = useCreateThread(chatId);
   const { data: threads } = useGetThreads({ chatId });
 
   return (
