@@ -2,7 +2,9 @@ import { useParams } from "react-router-dom";
 import useGetChat from "../../library/hooks/useGetChat";
 import ChatDefaultImage from "./ChatDefaultImage";
 import {
+  Avatar,
   Box,
+  Grid,
   IconButton,
   InputBase,
   Paper,
@@ -23,6 +25,12 @@ const ChatContent = () => {
   const [createThread] = useCreateThread(chatId);
   const { data: threads } = useGetThreads({ chatId });
 
+  const handleCreateThread = async () => {
+    await createThread({
+      variables: { createThreadInput: { content: thread, chatId } },
+    });
+    setThread("");
+  };
   return (
     <Stack
       sx={{
@@ -37,7 +45,21 @@ const ChatContent = () => {
           <Typography variant="h4">{data?.chat.chatName}</Typography>
           <Box>
             {threads?.threads.map((thread) => (
-              <p>{thread.content}</p>
+              <Grid container alignItems="center" sx={{ marginBottom: 1 }}>
+                <Grid item xs={3} md={1}>
+                  <Avatar src="" sx={{ width: 40, height: 40 }} />
+                </Grid>
+                <Grid item xs={9} md={11}>
+                  <Stack>
+                    <Typography sx={{ padding: 1 }}>
+                      {thread.content}
+                    </Typography>
+                    <Typography variant="caption" sx={{ marginLeft: 2 }}>
+                      {new Date(thread.createdAt).toLocaleDateString()}
+                    </Typography>
+                  </Stack>
+                </Grid>
+              </Grid>
             ))}
           </Box>
 
@@ -54,14 +76,11 @@ const ChatContent = () => {
               }}
               value={thread}
               onChange={(e) => setThread(e.target.value)}
+              onKeyDown={async (e) => {
+                if (e.key == "Enter") await handleCreateThread();
+              }}
             />
-            <IconButton
-              onClick={() =>
-                createThread({
-                  variables: { createThreadInput: { content: thread, chatId } },
-                })
-              }
-            >
+            <IconButton onClick={handleCreateThread}>
               <SendRounded sx={{ color: "#57A6A1" }} />
             </IconButton>
           </Paper>
