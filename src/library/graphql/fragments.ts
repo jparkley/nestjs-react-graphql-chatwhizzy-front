@@ -15,5 +15,7 @@ export const ThreadFragment = graphql(`
     _id
     content
     createdAt
+    chatId
+    userId
   }
 `);

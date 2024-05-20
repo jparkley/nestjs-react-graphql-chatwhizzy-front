@@ -58,6 +58,14 @@ const GetThreadsDocument = graphql(`
   }
 `);
 
+const OnThreadCreatedDocument = graphql(`
+  subscription onThreadCreated($chatId: String!) {
+    onThreadCreated(chatId: $chatId) {
+      ...ThreadFragment
+    }
+  }
+`);
+
 export {
   CreateUserDocument,
   GetCurrentUserDocument,
@@ -66,4 +74,5 @@ export {
   GetChatDocument,
   CreateThreadDocument,
   GetThreadsDocument,
+  OnThreadCreatedDocument,
 };
