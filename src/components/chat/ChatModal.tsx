@@ -11,9 +11,7 @@ import {
   Stack,
   Switch,
   TextField,
-  Toolbar,
   Typography,
-  outlinedInputClasses,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import useCreateChat from "../../library/hooks/useCreateChat";

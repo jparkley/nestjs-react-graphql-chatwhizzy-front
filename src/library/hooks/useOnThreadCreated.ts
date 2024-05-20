@@ -9,3 +9,5 @@ const useOnThreadCreated = (
 ) => {
   return useSubscription(OnThreadCreatedDocument, { variables });
 };
+
+export default useOnThreadCreated;

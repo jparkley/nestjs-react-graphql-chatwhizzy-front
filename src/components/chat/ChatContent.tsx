@@ -11,11 +11,11 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import AttractionsIcon from "@mui/icons-material/Attractions";
+import { useEffect, useRef, useState } from "react";
 import SendRounded from "@mui/icons-material/SendRounded";
 import useCreateThread from "../../library/hooks/useCreateThread";
-import { useEffect, useRef, useState } from "react";
 import useGetThreads from "../../library/hooks/useGetThreads";
+import useOnThreadCreated from "../../library/hooks/useOnThreadCreated";
 
 const ChatContent = () => {
   const params = useParams();
@@ -27,6 +27,7 @@ const ChatContent = () => {
   const { data: threads } = useGetThreads({ chatId });
   const divRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+  const { data: latestMessage } = useOnThreadCreated({ chatId });
 
   const scrollToBottom = () => divRef.current?.scrollIntoView();
 

@@ -8,7 +8,7 @@ import { getMainDefinition } from "@apollo/client/utilities";
 
 const redirectLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
-    if (graphQLErrors[0].extensions.code === ERROR_UNAUTHENTICATED) {
+    if (graphQLErrors[0].extensions?.code === ERROR_UNAUTHENTICATED) {
       if (!publicRoutes.includes(window.location.pathname)) {
         redirectToLogin();
       }
