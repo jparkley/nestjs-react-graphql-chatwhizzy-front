@@ -16,20 +16,40 @@ import SendRounded from "@mui/icons-material/SendRounded";
 import useCreateThread from "../../library/hooks/useCreateThread";
 import useGetThreads from "../../library/hooks/useGetThreads";
 import useOnThreadCreated from "../../library/hooks/useOnThreadCreated";
+import { Thread } from "../../gql/graphql";
 
 const ChatContent = () => {
   const params = useParams();
   const chatId = params._id!;
-  const [thread, setThread] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [thread, setThread] = useState(""); // for new input
+  const [threads, setThreads] = useState<Thread[]>([]); // combined threads (existing + user's + pushed)
+
   const { data } = useGetChat({ _id: chatId });
+  const { data: existingThreads } = useGetThreads({ chatId });
+  const { data: latestThread } = useOnThreadCreated({ chatId });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [createThread] = useCreateThread(chatId);
-  const { data: threads } = useGetThreads({ chatId });
+
   const divRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
-  const { data: latestMessage } = useOnThreadCreated({ chatId });
 
   const scrollToBottom = () => divRef.current?.scrollIntoView();
+
+  useEffect(() => {
+    if (existingThreads) setThreads(existingThreads.threads);
+  }, [existingThreads]);
+
+  useEffect(() => {
+    const currentLastThread = threads[threads.length - 1];
+    if (
+      latestThread?.onThreadCreated &&
+      latestThread.onThreadCreated._id !== currentLastThread?._id
+    ) {
+      setThreads([...threads, latestThread.onThreadCreated]);
+    }
+  }, [latestThread]);
 
   useEffect(() => {
     setThread("");
@@ -67,7 +87,7 @@ const ChatContent = () => {
         <>
           <Typography variant="h4">{data?.chat.chatName}</Typography>
           <Box sx={{ maxHeight: "70vh", overflow: "auto" }}>
-            {threads?.threads.map((thread) => (
+            {threads?.map((thread) => (
               <Grid container alignItems="center" sx={{ marginBottom: 1 }}>
                 <Grid item xs={3} md={1}>
                   <Avatar src="" sx={{ width: 40, height: 40 }} />
