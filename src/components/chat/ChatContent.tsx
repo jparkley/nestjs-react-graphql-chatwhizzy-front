@@ -98,7 +98,13 @@ const ChatContent = () => {
                       {thread.content}
                     </Typography>
                     <Typography variant="caption" sx={{ marginLeft: 2 }}>
-                      {new Date(thread.createdAt).toLocaleDateString()}
+                      {new Date(thread.createdAt).toLocaleDateString(
+                        undefined,
+                        {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }
+                      )}
                     </Typography>
                   </Stack>
                 </Grid>
