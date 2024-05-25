@@ -1,4 +1,4 @@
-import { Container, CssBaseline, Grid, ThemeProvider } from "@mui/material";
+import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import { RouterProvider } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import apolloClient from "./library/apollo-client";

@@ -1,5 +1,5 @@
 import { AddComment, Favorite } from "@mui/icons-material";
-import { AppBar, IconButton, Stack, Toolbar } from "@mui/material";
+import { AppBar, IconButton, Toolbar } from "@mui/material";
 
 interface ChatListHeaderProps {
   addChatModal: () => void;

@@ -18,6 +18,7 @@ const ChatDefaultImage = () => {
           >
             <img
               src="/chat-intro.gif"
+              alt="chat default"
               width={300}
               style={{
                 margin: 5,

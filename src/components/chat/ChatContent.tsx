@@ -49,7 +49,7 @@ const ChatContent = () => {
     ) {
       setThreads([...threads, latestThread.onThreadCreated]);
     }
-  }, [latestThread]);
+  }, [threads, latestThread]);
 
   useEffect(() => {
     setThread("");
@@ -98,13 +98,10 @@ const ChatContent = () => {
                       {thread.content}
                     </Typography>
                     <Typography variant="caption" sx={{ marginLeft: 2 }}>
-                      {new Date(thread.createdAt).toLocaleDateString(
-                        undefined,
-                        {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        }
-                      )}
+                      {new Date(thread.createdAt).toLocaleDateString("en-us", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
                     </Typography>
                   </Stack>
                 </Grid>
@@ -127,7 +124,7 @@ const ChatContent = () => {
               value={thread}
               onChange={(e) => setThread(e.target.value)}
               onKeyDown={async (e) => {
-                if (e.key == "Enter") {
+                if (e.key === "Enter") {
                   e.preventDefault();
                   await handleCreateThread();
                 }
