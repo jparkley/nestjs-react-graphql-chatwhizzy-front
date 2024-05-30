@@ -39,9 +39,9 @@ const ChatListItem = ({ chat, selected }: ChatListItemProps) => {
                   variant="body2"
                   color="text.primary"
                 >
-                  Another Chat room
+                  {chat.latestThread?.user.username || ""}
                 </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
+                {" " + (chat.latestThread?.content || "")}
               </React.Fragment>
             }
           />
