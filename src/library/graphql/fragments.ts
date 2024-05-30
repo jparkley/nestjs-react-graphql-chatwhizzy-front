@@ -3,10 +3,10 @@ import { graphql } from "../../gql";
 export const ChatFragment = graphql(`
   fragment ChatFragment on Chat {
     _id
-    creatorId
-    isPrivate
-    memberIds
     chatName
+    latestThread {
+      ...ThreadFragment
+    }
   }
 `);
 
@@ -16,6 +16,9 @@ export const ThreadFragment = graphql(`
     content
     createdAt
     chatId
-    userId
+    user {
+      _id
+      email
+    }
   }
 `);

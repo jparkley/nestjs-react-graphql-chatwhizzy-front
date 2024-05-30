@@ -13,8 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  fragment ChatFragment on Chat {\n    _id\n    creatorId\n    isPrivate\n    memberIds\n    chatName\n  }\n": types.ChatFragmentFragmentDoc,
-    "\n  fragment ThreadFragment on Thread {\n    _id\n    content\n    createdAt\n    chatId\n    userId\n  }\n": types.ThreadFragmentFragmentDoc,
+    "\n  fragment ChatFragment on Chat {\n    _id\n    chatName\n    latestThread {\n      ...ThreadFragment\n    }\n  }\n": types.ChatFragmentFragmentDoc,
+    "\n  fragment ThreadFragment on Thread {\n    _id\n    content\n    createdAt\n    chatId\n    user {\n      _id\n      email\n    }\n  }\n": types.ThreadFragmentFragmentDoc,
     "\n  mutation CreateUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n      email\n    }\n  }\n": types.CreateUserDocument,
     "\n  query GetCurrentUser {\n    currentUser {\n      _id\n      email\n    }\n  }\n": types.GetCurrentUserDocument,
     "\n  mutation CreateChat($createChatInput: CreateChatInput!) {\n    createChat(createChatInput: $createChatInput) {\n      ...ChatFragment\n    }\n  }\n": types.CreateChatDocument,
@@ -42,11 +42,11 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment ChatFragment on Chat {\n    _id\n    creatorId\n    isPrivate\n    memberIds\n    chatName\n  }\n"): (typeof documents)["\n  fragment ChatFragment on Chat {\n    _id\n    creatorId\n    isPrivate\n    memberIds\n    chatName\n  }\n"];
+export function graphql(source: "\n  fragment ChatFragment on Chat {\n    _id\n    chatName\n    latestThread {\n      ...ThreadFragment\n    }\n  }\n"): (typeof documents)["\n  fragment ChatFragment on Chat {\n    _id\n    chatName\n    latestThread {\n      ...ThreadFragment\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment ThreadFragment on Thread {\n    _id\n    content\n    createdAt\n    chatId\n    userId\n  }\n"): (typeof documents)["\n  fragment ThreadFragment on Thread {\n    _id\n    content\n    createdAt\n    chatId\n    userId\n  }\n"];
+export function graphql(source: "\n  fragment ThreadFragment on Thread {\n    _id\n    content\n    createdAt\n    chatId\n    user {\n      _id\n      email\n    }\n  }\n"): (typeof documents)["\n  fragment ThreadFragment on Thread {\n    _id\n    content\n    createdAt\n    chatId\n    user {\n      _id\n      email\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
