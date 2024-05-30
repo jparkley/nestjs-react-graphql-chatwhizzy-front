@@ -4,6 +4,7 @@ import {
   OnThreadCreatedSubscriptionVariables,
 } from "../../gql/graphql";
 import updateThreadQuery from "../cache/updateThreadQuery";
+import updateChatQuery from "../cache/updateChatQuery";
 
 const useOnThreadCreated = (
   variables: OnThreadCreatedSubscriptionVariables
@@ -13,7 +14,10 @@ const useOnThreadCreated = (
     onData: ({ client, data }) => {
       // update 'threads'(getThreads) query data
       // if there's a new thread from subscription
-      if (data.data) updateThreadQuery(client.cache, data.data.onThreadCreated);
+      if (data.data) {
+        updateThreadQuery(client.cache, data.data.onThreadCreated);
+        updateChatQuery(client.cache, data.data.onThreadCreated);
+      }
     },
   });
 };
