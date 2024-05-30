@@ -19,6 +19,7 @@ export const ThreadFragment = graphql(`
     user {
       _id
       email
+      username
     }
   }
 `);

@@ -1,12 +1,13 @@
 import { Button, Stack, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
 import { useNavigate } from "react-router-dom";
+import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
 
 interface AuthProps {
   submitLabel: string;
   onSubmit: (credentials: { email: string; password: string }) => Promise<void>;
   children: React.ReactNode;
+  extraFields?: React.ReactNode[];
   error?: string;
   loading?: boolean;
 }
@@ -17,6 +18,7 @@ const Auth = ({
   children,
   error,
   loading,
+  extraFields,
 }: AuthProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,10 +45,12 @@ const Auth = ({
         justifyContent: "center",
       }}
     >
+      {extraFields}
       <TextField
         type="email"
         label="Email"
         variant="outlined"
+        name="email"
         value={email}
         error={!!error}
         helperText={error}
