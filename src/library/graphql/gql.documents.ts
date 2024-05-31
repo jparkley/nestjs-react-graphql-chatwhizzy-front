@@ -59,8 +59,8 @@ const GetThreadsDocument = graphql(`
 `);
 
 const OnThreadCreatedDocument = graphql(`
-  subscription onThreadCreated($chatId: String!) {
-    onThreadCreated(chatId: $chatId) {
+  subscription onThreadCreated($chatIds: [String!]!) {
+    onThreadCreated(chatIds: $chatIds) {
       ...ThreadFragment
     }
   }

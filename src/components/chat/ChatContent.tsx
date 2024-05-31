@@ -27,7 +27,6 @@ const ChatContent = () => {
 
   const { data } = useGetChat({ _id: chatId });
   const { data: existingThreads } = useGetThreads({ chatId });
-  const { data: latestThread } = useOnThreadCreated({ chatId });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [createThread] = useCreateThread(chatId);
@@ -40,16 +39,6 @@ const ChatContent = () => {
   useEffect(() => {
     if (existingThreads) setThreads(existingThreads.threads);
   }, [existingThreads]);
-
-  useEffect(() => {
-    const currentLastThread = threads[threads.length - 1];
-    if (
-      latestThread?.onThreadCreated &&
-      latestThread.onThreadCreated._id !== currentLastThread?._id
-    ) {
-      setThreads([...threads, latestThread.onThreadCreated]);
-    }
-  }, [threads, latestThread]);
 
   useEffect(() => {
     setThread("");

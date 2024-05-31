@@ -7,12 +7,15 @@ import ChatModal from "./ChatModal";
 import useGetChats from "../../library/hooks/useGetChats";
 
 import { useLocation } from "react-router-dom";
+import useOnThreadCreated from "../../library/hooks/useOnThreadCreated";
 
 const ChatList = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedChatId, setSelectedChatId] = useState("");
   const { data } = useGetChats();
   const path = useLocation();
+
+  useOnThreadCreated({ chatIds: data?.chats.map((chat) => chat._id) || [] });
 
   useEffect(() => {
     const pathArray = path.pathname.split("chat/");

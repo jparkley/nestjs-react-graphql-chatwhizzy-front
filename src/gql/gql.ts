@@ -22,7 +22,7 @@ const documents = {
     "\n  query GetChat($_id: String!) {\n    chat(_id: $_id) {\n      ...ChatFragment\n    }\n  }\n": types.GetChatDocument,
     "\n  mutation CreateThread($createThreadInput: CreateThreadInput!) {\n    createThread(createThreadInput: $createThreadInput) {\n      ...ThreadFragment\n    }\n  }\n": types.CreateThreadDocument,
     "\n  query GetThreads($chatId: String!) {\n    threads(chatId: $chatId) {\n      ...ThreadFragment\n    }\n  }\n": types.GetThreadsDocument,
-    "\n  subscription onThreadCreated($chatId: String!) {\n    onThreadCreated(chatId: $chatId) {\n      ...ThreadFragment\n    }\n  }\n": types.OnThreadCreatedDocument,
+    "\n  subscription onThreadCreated($chatIds: [String!]!) {\n    onThreadCreated(chatIds: $chatIds) {\n      ...ThreadFragment\n    }\n  }\n": types.OnThreadCreatedDocument,
 };
 
 /**
@@ -78,7 +78,7 @@ export function graphql(source: "\n  query GetThreads($chatId: String!) {\n    t
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  subscription onThreadCreated($chatId: String!) {\n    onThreadCreated(chatId: $chatId) {\n      ...ThreadFragment\n    }\n  }\n"): (typeof documents)["\n  subscription onThreadCreated($chatId: String!) {\n    onThreadCreated(chatId: $chatId) {\n      ...ThreadFragment\n    }\n  }\n"];
+export function graphql(source: "\n  subscription onThreadCreated($chatIds: [String!]!) {\n    onThreadCreated(chatIds: $chatIds) {\n      ...ThreadFragment\n    }\n  }\n"): (typeof documents)["\n  subscription onThreadCreated($chatIds: [String!]!) {\n    onThreadCreated(chatIds: $chatIds) {\n      ...ThreadFragment\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
