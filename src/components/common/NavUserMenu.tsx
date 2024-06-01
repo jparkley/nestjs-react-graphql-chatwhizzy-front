@@ -8,6 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import useLogout from "../../library/hooks/useLogout";
 import redirectToLogin from "../../library/utils/redirectToLogin";
+import router from "../routes/Routes";
 
 const NavUserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -44,6 +45,9 @@ const NavUserMenu = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
+        <MenuItem key="profile" onClick={() => router.navigate("/profile")}>
+          <Typography textAlign="center">Profile</Typography>
+        </MenuItem>
         <MenuItem
           key="logout"
           onClick={() => {
