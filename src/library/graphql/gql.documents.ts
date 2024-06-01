@@ -14,6 +14,7 @@ const GetCurrentUserDocument = graphql(`
     currentUser {
       _id
       email
+      username
     }
   }
 `);
