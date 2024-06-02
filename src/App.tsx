@@ -6,6 +6,7 @@ import router from "./components/routes/Routes";
 import RouteGuard from "./components/auth/RouteGuard";
 import Header from "./components/common/Header";
 import mainTheme from "./theme";
+import CustomSnackBar from "./components/common/SnackBar";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <RouterProvider router={router}></RouterProvider>
           </RouteGuard>
         </Container>
+        <CustomSnackBar />
       </ThemeProvider>
     </ApolloProvider>
   );
