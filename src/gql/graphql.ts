@@ -146,9 +146,9 @@ export type User = {
 
 export type ChatFragmentFragment = { __typename?: 'Chat', _id: string, chatName: string, latestThread?: { __typename?: 'Thread', _id: string, content: string, createdAt: any, chatId: string, user: { __typename?: 'User', _id: string, email: string, username: string, imageUrl: string } } | null };
 
-export type ThreadFragmentFragment = { __typename?: 'Thread', _id: string, content: string, createdAt: any, chatId: string, user: { __typename?: 'User', _id: string, email: string, username: string, imageUrl: string } };
-
 export type UserFragmentFragment = { __typename?: 'User', _id: string, email: string, username: string, imageUrl: string };
+
+export type ThreadFragmentFragment = { __typename?: 'Thread', _id: string, content: string, createdAt: any, chatId: string, user: { __typename?: 'User', _id: string, email: string, username: string, imageUrl: string } };
 
 export type CreateUserMutationVariables = Exact<{
   createUserInput: CreateUserInput;

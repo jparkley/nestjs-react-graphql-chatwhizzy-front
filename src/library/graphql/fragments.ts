@@ -10,6 +10,15 @@ export const ChatFragment = graphql(`
   }
 `);
 
+export const UserFragment = graphql(`
+  fragment UserFragment on User {
+    _id
+    email
+    username
+    imageUrl
+  }
+`);
+
 export const ThreadFragment = graphql(`
   fragment ThreadFragment on Thread {
     _id
@@ -19,14 +28,5 @@ export const ThreadFragment = graphql(`
     user {
       ...UserFragment
     }
-  }
-`);
-
-export const UserFragment = graphql(`
-  fragment UserFragment on User {
-    _id
-    email
-    username
-    imageUrl
   }
 `);
