@@ -1,4 +1,4 @@
-import { graphql } from "../../gql/gql";
+import { graphql } from "../../gql";
 
 const CreateUserDocument = graphql(`
   mutation CreateUser($createUserInput: CreateUserInput!) {
