@@ -1,5 +1,5 @@
 import apolloClient from "../apollo-client";
-import { loggedInVar } from "../reactive-vars/loggedIn.var";
+import { loggedInVar } from "../reactive-vars/loggedInVar";
 
 const redirectToLogin = () => {
   // router.navigate("/login");

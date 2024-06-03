@@ -15,7 +15,6 @@ import { useEffect, useRef, useState } from "react";
 import SendRounded from "@mui/icons-material/SendRounded";
 import useCreateThread from "../../library/hooks/useCreateThread";
 import useGetThreads from "../../library/hooks/useGetThreads";
-import useOnThreadCreated from "../../library/hooks/useOnThreadCreated";
 import { Thread } from "../../gql/graphql";
 
 const ChatContent = () => {

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { publicRoutes } from "../../library/constants";
 import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
-import { loggedInVar } from "../../library/reactive-vars/loggedIn.var";
+import { loggedInVar } from "../../library/reactive-vars/loggedInVar";
 
 const RouteGuard = ({ children }: { children: JSX.Element }) => {
   const { data: user } = useGetCurrentUser();

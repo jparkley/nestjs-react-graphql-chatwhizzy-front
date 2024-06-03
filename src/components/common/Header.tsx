@@ -3,7 +3,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import NavMenu from "./NavMenu";
 import NavUserMenu from "./NavUserMenu";
-import { loggedInVar } from "../../library/reactive-vars/loggedIn.var";
+import { loggedInVar } from "../../library/reactive-vars/loggedInVar";
 import { useReactiveVar } from "@apollo/client";
 import { navPagesForNonUsers, navPagesForUsers } from "../../library/constants";
 

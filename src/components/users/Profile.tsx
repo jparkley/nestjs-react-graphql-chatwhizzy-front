@@ -1,7 +1,7 @@
 import { Avatar, Button, Stack, Typography } from "@mui/material";
 import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
 import { UploadFile } from "@mui/icons-material";
-import { snackVar } from "../../library/reactive-vars/snack.var";
+import { snackVar } from "../../library/reactive-vars/snackVar";
 
 const Profile = () => {
   const user = useGetCurrentUser();
