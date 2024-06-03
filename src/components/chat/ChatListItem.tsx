@@ -24,7 +24,7 @@ const ChatListItem = ({ chat, selected }: ChatListItemProps) => {
           selected={selected}
         >
           <ListItemAvatar sx={{ color: "#57A6A1" }}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <Avatar alt="Profile icon" src={chat.latestThread?.user.imageUrl} />
           </ListItemAvatar>
           <ListItemText
             primary={

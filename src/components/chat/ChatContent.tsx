@@ -79,7 +79,15 @@ const ChatContent = () => {
             {threads?.map((thread) => (
               <Grid container alignItems="center" sx={{ marginBottom: 1 }}>
                 <Grid item xs={3} md={1}>
-                  <Avatar src="" sx={{ width: 40, height: 40 }} />
+                  <Stack>
+                    <Avatar
+                      src={thread.user.imageUrl}
+                      sx={{ width: 40, height: 40 }}
+                    />
+                    <Typography variant="caption">
+                      {thread.user.username}
+                    </Typography>
+                  </Stack>
                 </Grid>
                 <Grid item xs={9} md={11}>
                   <Stack>
