@@ -15,7 +15,7 @@ const useLogin = () => {
         body: JSON.stringify(request),
       }
     );
-    console.log("res: ", response);
+
     if (!response.ok) {
       setError(true);
       return;

@@ -14,7 +14,7 @@ const Profile = () => {
         method: "POST",
         body: formData,
       });
-      console.log("====:", res);
+
       if (!res.ok) {
         throw new Error("Upload failed");
       }
