@@ -12,9 +12,7 @@ const CreateUserDocument = graphql(`
 const GetCurrentUserDocument = graphql(`
   query GetCurrentUser {
     currentUser {
-      _id
-      email
-      username
+      ...UserFragment
     }
   }
 `);

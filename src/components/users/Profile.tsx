@@ -29,7 +29,10 @@ const Profile = () => {
       sx={{ marginTop: "3rem", alignItems: "ceNter", justifyContent: "center" }}
     >
       <Typography variant="h3">{user?.data?.currentUser.username}</Typography>
-      <Avatar sx={{ width: 200, height: 200 }} />
+      <Avatar
+        sx={{ width: 200, height: 200 }}
+        src={user?.data?.currentUser.imageUrl}
+      />
       <Button
         component="label"
         size="medium"
