@@ -1,5 +1,8 @@
 import { NavPage } from "./interfaces";
+
 export const ERROR_UNAUTHENTICATED = "UNAUTHENTICATED";
+export const TOKEN = "token";
+
 export const publicRoutes = ["/", "/login", "/signup"];
 export const userMenu = ["Profile", "Logout"];
 export const navPagesForUsers: NavPage[] = [

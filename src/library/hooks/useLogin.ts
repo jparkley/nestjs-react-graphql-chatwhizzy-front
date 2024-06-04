@@ -1,5 +1,6 @@
 import { useState } from "react";
 import apolloClient from "../apollo-client";
+import { setToken } from "../utils/token";
 
 const useLogin = () => {
   const [error, setError] = useState<boolean>();
@@ -20,6 +21,7 @@ const useLogin = () => {
       setError(true);
       return;
     }
+    setToken(await response.text());
     setError(false);
     await apolloClient.refetchQueries({ include: "active" });
   };
