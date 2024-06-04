@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import useLogout from "../../library/hooks/useLogout";
 import redirectToLogin from "../../library/utils/redirectToLogin";
 import router from "../routes/Routes";
+import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
 
 const NavUserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -22,11 +23,13 @@ const NavUserMenu = () => {
     setAnchorElUser(null);
   };
 
+  const user = useGetCurrentUser();
+
   return (
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title="Open User Menu">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          <Avatar alt="Profile image" src={user?.data?.currentUser.imageUrl} />
         </IconButton>
       </Tooltip>
       <Menu
