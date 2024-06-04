@@ -25,6 +25,7 @@ const httpLink = new HttpLink({
 const wsLink = new GraphQLWsLink(
   createClient({
     url: `${process.env.REACT_APP_WS_URL}/graphql`,
+    connectionParams: { token: getToken() },
   })
 );
 
