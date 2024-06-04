@@ -2,6 +2,7 @@ import { Avatar, Button, Stack, Typography } from "@mui/material";
 import useGetCurrentUser from "../../library/hooks/useGetCurrentUser";
 import { UploadFile } from "@mui/icons-material";
 import { snackVar } from "../../library/reactive-vars/snackVar";
+import { customFetch } from "../../library/utils/customFetch";
 
 const Profile = () => {
   const user = useGetCurrentUser();
@@ -10,10 +11,13 @@ const Profile = () => {
     try {
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/image`, {
-        method: "POST",
-        body: formData,
-      });
+      const res = await customFetch(
+        `${process.env.REACT_APP_API_URL}/users/image`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Upload failed");
